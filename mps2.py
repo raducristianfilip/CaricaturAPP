@@ -113,7 +113,7 @@ def create_drawing(input_image):
 	palette = palette.extend([(0, 50, 0), (15, 30, 0), (-15, 30, 0)])
 
 	# display the color palette
-	cv2.imshow("palette", palette.to_image())
+	#cv2.imshow("palette", palette.to_image())
 	cv2.waitKey(200)
 
 	print("Computing gradient...")
@@ -145,12 +145,16 @@ def create_drawing(input_image):
 			# draw the brush stroke
 			cv2.ellipse(res, (x, y), (length, stroke_scale), angle, 0, 360, color, -1, cv2.LINE_AA)
 
-	cv2.imshow("res", limit_size(res, 1080))
+	#cv2.imshow("res", limit_size(res, 1080))
 	cv2.imwrite(res_path, res)
 	cv2.waitKey(0)
 
 if __name__ == '__main__':
 	black_and_white('vali.jpg', 'bw_eu.jpg')
+	print("-------------------Black and White Done----------------")
 	create_sepia('vali.jpg', 'sepia_eu.jpg')
+	print("--------------------Sepia Done-------------------------")
 	create_cartoon('vali.jpg', 'cartoon_eu.jpg')
+	print("----------------------Cartoon Done-----------------------")
 	create_drawing('cartoon_eu.jpg')
+	print("------------------------Drawing Done----------------------")
